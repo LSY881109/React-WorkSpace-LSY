@@ -1,0 +1,35 @@
+🚀 Vite란?
+	• 의미: 프랑스어로 "빠르다"
+	• 목적: 빠르고 간결한 모던 웹 프로젝트 개발 경험 제공
+	• 특징: 
+		○ 개발 시 네이티브 ES Module 활용
+		○ Rollup 기반 번들링으로 최적화된 빌드
+⚡ CRA vs Vite 비교
+구분	Create React App	Vite
+기반 기술	Webpack (JavaScript)	Esbuild (Go 언어)
+속도	느림 (코드 양↑ = 속도↓)	매우 빠름
+빌드 성능	일반적	고도로 최적화
+📦 지원 템플릿
+	• vanilla, vue, react, preact, lit, svelte
+💻 설치 및 실행
+설치 요구사항
+	• Node.js 14.18+ 또는 16+ 필요
+설치 명령어
+# NPM
+npm create vite@latest
+# Yarn
+yarn create vite
+React 프로젝트 생성
+# JavaScript React
+npm create vite@latest my-app -- --template react
+# TypeScript React  
+npm create vite@latest my-app -- --template react-ts
+실행
+npm run dev
+# 또는
+yarn run dev
+✅ 핵심 장점
+	1. 빠른 개발 서버 시작
+	2. 즉각적인 HMR (Hot Module Replacement)
+	3. 최적화된 프로덕션 빌드
+	4. 간단한 설정과 사용법
