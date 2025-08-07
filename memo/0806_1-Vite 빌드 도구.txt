@@ -5,9 +5,9 @@
 		○ 개발 시 네이티브 ES Module 활용
 		○ Rollup 기반 번들링으로 최적화된 빌드
 ⚡ CRA vs Vite 비교
-구분	Create React App	Vite
+구분	Create React App	        Vite
 기반 기술	Webpack (JavaScript)	Esbuild (Go 언어)
-속도	느림 (코드 양↑ = 속도↓)	매우 빠름
+속도	느림 (코드 양↑ = 속도↓)	    매우 빠름
 빌드 성능	일반적	고도로 최적화
 📦 지원 템플릿
 	• vanilla, vue, react, preact, lit, svelte

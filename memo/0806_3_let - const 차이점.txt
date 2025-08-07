@@ -1,0 +1,27 @@
+var, let, const 간단 정의
+키워드  선언 특징       재할당      재선언          블록 스코프\
+var     함수 스코프     가능        가능            ❌ (함수 단위)
+let     블록 스코프     가능        ❌              ✅
+const   블록 스코프     ❌          ❌              ✅
+
+예시 코드 )
+function myFunc() {
+var a = "hello";
+if (true) {
+     var a = "bye";
+     console.log(a) ;// bye
+}
+     console.log(a) ;// bye
+
+}
+
+예시 코드2 )
+function myFunc() {
+let a = "hello";
+if (true) {
+     let a = "bye";
+     console.log(a) ;// bye
+}
+     console.log(a) ;// hello
+
+}

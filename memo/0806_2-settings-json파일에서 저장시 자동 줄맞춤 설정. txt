@@ -1,0 +1,38 @@
+설정 방법, 
+ctrl + , -> 검색: save , -> settings.json 파일 열어서, 
+작업 하기 
+
+{
+    "liveServer.settings.CustomBrowser": "chrome",
+    "editor.stickyScroll.enabled": false,
+    "sqldeveloper.sqlHistory.historyLimit": 500,
+    "sqldeveloper.telemetry.enabled": true,
+    "java.completion.favoriteStaticMembers": [
+        
+        "org.junit.Assert.*",
+        "org.junit.Assume.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "org.junit.jupiter.api.Assumptions.*",
+        "org.junit.jupiter.api.DynamicContainer.*",
+        "org.junit.jupiter.api.DynamicTest.*",
+        "org.mockito.Mockito.*",
+        "org.mockito.ArgumentMatchers.*",
+        "org.mockito.Answers.*"
+    ],
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+    "source.fixAll": true // ESLint 또는 기타 린트 자동 수정
+  },
+
+  // 🔧 Prettier 사용 시 (확장 프로그램 설치 필요)
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Prettier를 기본 포맷터로 설정
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
