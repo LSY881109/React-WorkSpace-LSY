@@ -3,24 +3,32 @@ ctrl + , -> 검색: save , -> settings.json 파일 열어서,
 작업 하기 
 
 {
-    "liveServer.settings.CustomBrowser": "chrome",
-    "editor.stickyScroll.enabled": false,
-    "sqldeveloper.sqlHistory.historyLimit": 500,
-    "sqldeveloper.telemetry.enabled": true,
-    "java.completion.favoriteStaticMembers": [
-        
-        "org.junit.Assert.*",
-        "org.junit.Assume.*",
-        "org.junit.jupiter.api.Assertions.*",
-        "org.junit.jupiter.api.Assumptions.*",
-        "org.junit.jupiter.api.DynamicContainer.*",
-        "org.junit.jupiter.api.DynamicTest.*",
-        "org.mockito.Mockito.*",
-        "org.mockito.ArgumentMatchers.*",
-        "org.mockito.Answers.*"
-    ],
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
+  "workbench.colorTheme": "Default Light Modern",
+  "editor.stickyScroll.enabled": false,
+  "editor.fontSize": 24,
+  "liveServer.settings.AdvanceCustomBrowserCmdLine": "",
+  "liveServer.settings.CustomBrowser": "chrome",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "terminal.integrated.fontLigatures": true,
+  "terminal.integrated.fontSize": 24,
+  "editor.mouseWheelZoom": true,
+  "mdb.confirmRunAll": false,
+  "chat.commandCenter.enabled": false,
+  "sqldeveloper.sqlHistory.historyLimit": 500,
+  "sqldeveloper.telemetry.enabled": true,
+  "redhat.telemetry.enabled": true,
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.formatOnSave": true,
+  // 작업 시작
+  // 🔧 자동 줄맞춤 외 저장 시 실행할 액션 (예: ESLint fix 등)
+  "editor.codeActionsOnSave": {
     "source.fixAll": true // ESLint 또는 기타 린트 자동 수정
   },
 
@@ -35,4 +43,5 @@ ctrl + , -> 검색: save , -> settings.json 파일 열어서,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
+  // 작업 끝
 }

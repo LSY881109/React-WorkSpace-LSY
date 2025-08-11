@@ -1,0 +1,71 @@
+기본 환경 설정
+vscode 용
+yarn create vite 프로젝트명 --template react
+yarn create vite hello-react2 --template react
+
+1
+포맷팅 설정.
+방법1)
+Prettier-Code formatter: 코드 스타일 자동 정리 도구.
+f1-> format -> Prettier 확인
+방법2)
+해당 리액트 프로젝트 폴더에 들어가서 -> 파일명: .prettierrc , 생성.
+예시)설정
+{
+"singleQuote":true, // 작은 따옴표 사용
+"semi": true, // 문장 끝에 ; 세미콜론을 항상 붙임
+"useTabs": false, // 들여쓰기 탭 대신, 스페이스 사용.
+"tabWidth":2, // 들여쓰기, 기본 4칸, 2칸씩
+"trailingComma":"all", // 마지막 요소에 항상 콤마 붙이기.
+"printWidth" :80 // 한줄 최대 길이 80자로 제한. , 자동 줄바꿈 처리.
+}
+
+2
+저장시 자동 정렬
+기본설정 -> 설정 ->format on save 체크
+
+3
+기본 설정이고,
+- 경로 인식, 자동 완성, 기능
+루트디렉토리
+jsconfig.json
+{
+"compilerOptions" : {
+"target":"es6"
+}
+}
+
+초반에 설정이 어려우면, 밑에 방법 생략해도 괜찮음, 그냥 넘어가도 됨.
+방법2: 우리는 이설정하기. )
+vite + React ,
+
+파일명 : vite.config.js
+// vite.config.js
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react'; // Vue 등 다른 프레임워크는 바꿔주세요
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig({
+plugins: [react()],
+resolve: {
+alias: {
+'@': path.resolve(__dirname, 'src'), // @는 src/ 폴더로 연결
+},
+},
+});
+
+파일명 : jsconfig.json
+// jsconfig.json
+{
+"compilerOptions": {
+"baseUrl": ".",
+"paths": {
+"@/*": ["src/*"]
+}
+},
+"exclude": ["node_modules", "dist"]
+}

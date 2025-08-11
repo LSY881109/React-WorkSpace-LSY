@@ -1,0 +1,28 @@
+1. 리액트 버디
+2. 리액트
+3. 리액트 코드 스니펫
+4. 머터리얼 UI 디자인
+5. Prettier 설정.
+yarn 사용 중.
+1)
+yarn add --dev --exact prettier
+2)
+.prettierrc.json  파일 생성 하고,
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "printWidth": 80,
+  "arrowParens": "always" // 화살표 함수의 파라미터가 하나일 때도 항상 괄호로 감싸기
+}
+
+3) 자동 재정렬
+ctrl + alt + shift + p 또는
+ctrl + alt + l
+
+4)
+설정 -> 검색 : prettier , -> 자동 구성,
+
+
+

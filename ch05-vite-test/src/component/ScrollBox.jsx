@@ -14,7 +14,6 @@ class ScrollBox extends Component {
   };
 
   scrollToTop = () => {
-    const { scrollHeight, clientHeight } = this.box;
     this.box.scrollTop = 0;
   };
 
