@@ -1,0 +1,96 @@
+@import "./utils";
+
+// open-color , include-media : 색상 팔레트 쉽게 쓰기, 미디어쿼리 쉽게 이용하는 도구.
+//  yarn add open-color include-media
+
+// 사용법
+@import 'include-media/dist/_include-media';
+@import 'open-color/open-color';
+// 공식 문서에서 사용하는 컬러표 확인
+//https://github.com/yeun/open-color
+
+:local .wrapperSassComponent {
+  background: black;
+  padding: 2rem;
+  color: yellow;
+  font-size: 3rem;
+}
+
+.SassComponent {
+  display: flex;
+  //  // 추가, 외부 기능, 컬러 선택,
+  //  // 미디어 반응형 쉽게 해주는 기능
+  background: $oc-gray-2;
+  background: $gray;
+
+  @include media('<768px') {
+    background: $oc-teal-6;
+  }
+
+  .box {
+    //background: $red;
+    //실습3, 첫번째요소, 마지막 요소, 각각 색상 표기.
+    //&:first-child {
+    //  background: $yellow;
+    //}
+    //
+    //&:last-child {
+    //  background: $green;
+    //}
+
+    background: red;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+
+    &.red {
+      // background: $red;
+      @include square(1);
+    }
+
+    &.orange {
+      background: $orange;
+      @include square(2);
+    }
+
+    &.yellow {
+      background: $yellow;
+      @include square(3);
+    }
+
+    //실습2번
+    &.green {
+      background: $green;
+      // 추가,
+      @include square(4, 10px solid $red);
+    }
+
+    &.blue {
+      background: $blue;
+      @include square(5);
+    }
+
+    &.indigo {
+      background: $indigo;
+      @include square(6);
+    }
+
+    &.violet {
+      background: $violet;
+      @include square(7);
+    }
+
+    //실습1번
+    &.pink {
+      // background: $pink;
+      @include square(8);
+
+      &:hover {
+        background: white;
+      }
+    }
+
+    &:hover {
+      background: black;
+    }
+  } // box 닫는 부분
+}

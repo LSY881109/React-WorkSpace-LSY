@@ -1,0 +1,21 @@
+.wrapper {
+    background: black;
+    padding: 1rem;
+    color: white;
+    font-size: 2rem;
+}
+
+.inverted {
+    background: white;
+    color: red;
+    border : 1px solid yellow;
+}
+/*웹브라우저에서 확인시 클래스 명이 중복되지 않는 부분 확인.*/
+/*<div class="_wrapper_1nxym_1 _inverted_1nxym_15">*/
+
+
+/*글로벌 css 작성해보기*/
+:global .something{
+    font-weight: 800;
+    color: aqua;
+}

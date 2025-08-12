@@ -1,0 +1,22 @@
+// 변수 사용하기
+$red: #fa5252;
+$orange: #fd7e14;
+$yellow: #fcc419;
+$green: #40c057;
+$blue: #339af0;
+$indigo: #5c7cfa;
+$violet: #7950f2;
+$gray: #777b74;
+
+//실습1
+$pink: #fc19d2;
+
+// 믹스인 만들기 (재사용되는 스타일 블록을 함수처럼 사용할 수 있음)
+// 실습2, 속성 border 추가.
+@mixin square($size, $border: none) {
+  $calculated: 32px * $size;
+  width: $calculated;
+  height: $calculated;
+  // 실습2,
+  border: $border;
+}
