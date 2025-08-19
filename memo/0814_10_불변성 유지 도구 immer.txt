@@ -1,0 +1,135 @@
+immer 라이브러리
+Immer 사용 전: 불변성과 Spread 연산자의 한계
+
+React에서 상태(state)를 업데이트할 때는
+\*\*불변성(Immutability)\*\*을 지키는 것이 매우 중요합니다.
+ 즉, 원본 객체나 배열을 직접 수정하는 대신,
+ 항상 새로운 객체나 배열을 만들어 교체해야 합니다.
+ 이는 React가 상태 변화를 감지하고 컴포넌트를 효율적으로 리렌더링하는 핵심 원리이기 때문입니다.
+
+Spread 연산자는 불변성을 지키면서
+객체를 업데이트하는 좋은 방법이지만,
+**상태의 구조가 복잡해질수록 코드가 급격히 지저분해지고 실수가 발생하기 쉽습니다.**
+
+#### 얕은 복사(Shallow Copy)의 문제점
+
+Spread 연산자는 객체의 가장 바깥쪽 레벨만 복사하는
+\*\*얕은 복사(shallow copy)\*\*를 수행합니다.
+객체 안에 또 다른 객체나 배열이 있는 경우(중첩된 구조),
+내부 객체/배열은 원본의 참조(주소값)를 그대로 유지하게 됩니다.
+
+---------------------------------------------------------------------
+spread 연산자, 전개 연산자. (기호 : ...)
+:배열, 문자열, 객체 등 반복 가능한(iterable) 것들을 개별 요소로 펼쳐주는 역할
+
+const original = ['a', 'b', 'c'];
+const copy = [...original];
+
+copy.push('d'); // 복사본에만 'd'를 추가
+
+console.log(original); // 결과: ['a', 'b', 'c'] (원본은 그대로)
+console.log(copy);     // 결과: ['a', 'b', 'c', 'd']
+
+
+예시2)
+let basic = ['둘', '셋'];
+
+let firstAdded = ['하나', ...basic];
+console.log(firstAdded); // 결과: ['하나', '둘', '셋']
+
+let lastAdded = [...basic, '넷'];
+console.log(lastAdded); // 결과: ['둘', '셋', '넷']
+: 원본 배열에 영향을 주지 않고, 복사 하는 형태.
+
+얕은 복사 문제점.
+// 원본 장바구니 객체
+const originalCart = {
+  id: 123,
+  // 메모리 위치 주소, 0x100
+  userInfo: { // 중첩된 객체
+    name: '김패션',
+    grade: 'VIP'
+     testObject : {// 중첩된 객체2
+        name2 : "test2"
+     }
+  },
+  items: ['👕', '👖'] // 중첩된 배열
+};
+
+// Spread 연산자를 사용해 얕은 복사 수행
+const copiedCart = { ...originalCart };
+
+문제점 1, 중첩 객체 수정.
+copiedCart.userInfo.grade = 'GOLD'; // 복사본의 사용자 등급을 GOLD로 변경
+
+// 결과를 확인해볼까요?
+console.log('복사본 사용자 등급:', copiedCart.userInfo.grade); // 👉 결과: 'GOLD'
+console.log('원본 사용자 등급:', originalCart.userInfo.grade); // 😨 결과: 'GOLD'
+
+// 중첩 객체는 , 내부의 내용이 아니라, 해당 데이터 위치의 메모리 주솟값을 복사,
+// 복사본을 수정하면, 원본의 내용도 같이 수정이 되어서, 불변성 유지가 안됨.
+
+해결책.
+const originalCart = {
+  id: 123,
+  userInfo: { name: '김패션', grade: 'VIP' },
+  items: ['👕', '👖']
+};
+
+// ✨ 올바른 해결책
+const copiedCart = {
+  ...originalCart, // 1. 최상위 객체를 얕은 복사
+  userInfo: {      // 2. userInfo 속성을 새로운 객체로 덮어쓰기
+    ...originalCart.userInfo, // 3. 원본 userInfo의 모든 속성을 펼쳐 넣고
+     testObject : {// 중첩된 객체2
+        ..originalCart.userInfo.testObject
+            name2 : "test2"
+         }
+    grade: 'GOLD'             // 4. 원하는 속성(grade)만 새 값으로 교체
+  }
+};
+
+// 결과 확인
+console.log('복사본 사용자 등급:', copiedCart.userInfo.grade); // 👉 결과: 'GOLD'
+console.log('원본 사용자 등급:', originalCart.userInfo.grade); // ✅ 결과: 'VIP' (원본 유지 성공!)
+
+ -> 객체 안에 중첩 객체의 갯수가 많아서, 깊이가 깊어 지면, spread 연산자를 사용하는 가독성이 안좋음.
+---------------------------------------------------------------------
+Immer  라이브러리 사용
+원본 객체
+const user = {
+  id: 1,
+  name: '김철수',
+  details: {
+    email: 'chulsoo@example.com',
+    profile: {
+      image: 'profile.jpg',
+      tags: ['react', 'developer']
+    }
+  }
+};
+전. spread 연산자로 복사하는 경우.
+// 'tags' 배열에 'javascript' 추가하기 (Spread 연산자 사용)
+const updatedUser = {
+  ...user, // 1. 최상위 객체 복사
+  details: {
+    ...user.details, // 2. details 객체 복사
+    profile: {
+      ...user.details.profile, // 3. profile 객체 복사
+      tags: [
+        ...user.details.profile.tags, // 4. tags 배열 복사
+        'javascript' // 5. 새로운 값 추가
+      ]
+    }
+  }
+};
+```
+후
+/ ✨ Immer를 사용한 코드
+const updatedUser = produce(user, draft => {
+  // draft 객체의 깊은 곳에 있는 배열에 직접 push 메서드를 사용합니다.
+  // Immer가 알아서 불변성 유지를 처리해줍니다.
+  draft.details.profile.tags.push('javascript');
+});
+
+결론, 코드가 간결해짐.

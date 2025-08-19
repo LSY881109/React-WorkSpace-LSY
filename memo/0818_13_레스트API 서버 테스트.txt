@@ -1,0 +1,112 @@
+https://newsapi.org/
+1)회원 가입
+2) 로그인
+3) API 키 발급
+4) 키
+주의사항), 같은 강의장에서, 동시에 접근 시, 해당 서버에서, 공격으로 판단해서, 안되는 경우가 있음.
+핸드폰으로, 와이파이 끄고, 데이터를 이용해서, 1) ~ 3) 진행하기.
+예시, 본인꺼로 하기.
+b7adb4f936494b3bac6
+
+5) 전체 뉴스 불러오기, country=us
+GET
+https://newsapi.org/v2/top-headlines?country=us&apiKey=b7adb4f936494b3bac6
+
+6) 특정 카테고리 뉴스 불러오기.
+가능한 카테고리 종류,
+business, entertainment, general, health, science, sports, technology.
+https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=본인꺼
+
+7)
+데이터 구조,
+샘플
+{
+  "status": "ok",
+  "totalResults": 57,
+  "articles": [
+//샘플 article
+    {
+      "source": {
+        "id": null,
+        "name": "CBS Sports"
+      },
+      "author": "Brent Brookhouse",
+      "title": "UFC 319 live updates, results -- Dricus du Plessis vs. Khamzat Chimaev: Fight card, start time, odds - CBS Sports",
+      "description": "The middleweight title is on the line on Saturday night in Chicago",
+      "url": "https://www.cbssports.com/mma/news/ufc-319-live-updates-results-dricus-du-plessis-vs-khamzat-chimaev-fight-card-start-time-odds/live/",
+      "urlToImage": "https://sportshub.cbsistatic.com/i/r/2025/08/16/253debd9-29a2-48cd-8b31-501631451ee8/thumbnail/1200x675/db792d9aa7d3d3d9326347b93bd6439c/dricus-khamzat-weighins.jpg",
+      "publishedAt": "2025-08-17T04:46:15Z",
+      "content": "CHICAGO -- Since Khamzat Chimaev won two fights in 10 days to kick off his UFC career in 2020, a title shot has felt inevitable. Chimaev finally gets that opportunity on Saturday night when he challe… [+1808 chars]"
+    },
+    //샘플 article
+
+8) 샘플 데이터에서, 화면에 출력할 내용을 선택,
+부트에서, 데이터 베이스에서 데이터를 다 가져와서, 모두다 화면에 출력을 안하고,
+DTO를 만들어서, 필요한 항목만, 프레젠테이션 출력할 데이터만 사용하기.
+title, 제목
+description, 내용
+url, 기사 원본 링크
+urlToImage, 뉴스 이미지
+=============================================================================
+부산 관광 명소 서비스, 공공데이터 포탈 서비스,
+
+http://apis.data.go.kr/6260000/AttractionService/getAttractionKr
+?serviceKey=본인키, 인코딩키
+&numOfRows=100
+&pageNo=1
+&resultType=json
+
+샘플 데이터
+{
+    "getAttractionKr": {
+        "header": {
+            "code": "00",
+            "message": "NORMAL_CODE"
+        },
+        "item": [
+            {
+                "UC_SEQ": 255,
+                "MAIN_TITLE": "흰여울문화마을",
+                "GUGUN_NM": "영도구",
+                "LAT": 35.07885,
+                "LNG": 129.04402,
+                "PLACE": "흰여울문화마을",
+                "TITLE": "가파른 절벽 끝에 흰여울문화마을",
+                "SUBTITLE": "흰여울길에서 만난 느림의 미학",
+                "ADDR1": "부산광역시 영도구 흰여울길",
+                "CNTCT_TEL": "051-419-4067",
+                "HOMEPAGE_URL": "http://www.ydculture.com/huinnyeoulculturetown/",
+                "TRFC_INFO": "도시철도 1호선 남포역 6번 출구 → 7, 71, 508 버스 환승 → 영선동 백련사 하차\n버스 7,71,508 영선동 백련사 하차\n주차 절영해안산책로 입구 공영 주차장 (유료)",
+                "USAGE_DAY": "",
+                "HLDY_INFO": "",
+                "USAGE_DAY_WEEK_AND_TIME": "매일",
+                "USAGE_AMOUNT": "무료",
+                "MIDDLE_SIZE_RM1": "장애인 주차장(절영해안산책로 공영주차장, 유료)",
+                "MAIN_IMG_NORMAL": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191222164810529_ttiel",
+                "MAIN_IMG_THUMB": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191222164810529_thumbL",
+                "ITEMCNTNTS": "절영해안산책로 가파른 담벼락 위로 독특한 마을 풍경이 보인다. 해안가 절벽 끝에 바다를 따라 난 좁은 골목길 안쪽으로 작은 집들이 다닥다닥 붙어 있다. 피난민들의 애잔한 삶이 시작된 곳이자 현재는 마을주민과 함께하는 문화마을공동체 흰여울문화마을이 자리한 곳이다.\n부산의 대표적인 원도심 흰여울길은 봉래산 기슭에서 굽이쳐 내리는 물줄기가 마치 흰 눈이 내리는 모습과 비슷하다 하여 이름 지어졌다. 2011년 12월, 낡은 가옥을 리모델링하면서 현재는 영도의 생활을 느낄 수 있는 독창적인 문화예술마을로 거듭났다. \n\n영화 ＜변호인＞을 보지 못한 사람도 그 영화의 명대사는 외울 것이다. 진우네 집 담벼락에 크게 쓰여 있기 때문이다. 많은 여행자의 영도 여행 인증샷 1호는 언제나 진우네 담벼락이었다. 흰여울길은 모두 14개의 골목길로 이어져 있고 골목골목 아기자기한 카페와 공방, 독립서점 등이 자리하고 있다. 느릿느릿 걷는 골목마다 바다 풍경이 들어오고 돌 틈 사이 피어있는 이름 모를 초록들이 일상에 여유를 더한다. 흰여울길에서 빼놓을 수 없는 코스 중 하나는 단연 흰여울점빵. 눈앞에 망망대해를 마주하고 후후 불며 먹는 라면이 세상 맛있는 곳. 발품 팔아 고단한 마음에 한줄기 평화가 스민다. 길의 끝은 또다시 절영해안산책로와 이어지고 절벽과 땅 아래를 힘차게 오르내리는 여행자들과 만난다.\n\n마을 담장을 따라 걷는 흰여울길은 현재의 절영로가 생기기 전까지 태종대로 가는 유일한 길이었다. 파도 소리 벗 삼아 오며 가는 길에 시선은 항상 바다에 머문다. 크고 작은 배들이 점점이 떠 있는 모습이 이국적이다. 부산항에 들어오는 선박들이 닻을 내리고 잠시 머무는 곳, 묘박지의 풍경이다. 영도에서만 볼 수 있는 색다른 풍경이기도 하다.\n바다를 접한 가파른 절벽이라 사람이 살수 없던 곳에 마을공동체의 노력으로 예술이 스며들었다, 흰여울 전망대에서 바라보는 영도 앞바다가 경이롭다.\n지금, 여기, 우리\n흰여울\n\n\n"
+            },
+
+3)
+가져올 데이터 ,
+1
+ "MAIN_TITLE": "흰여울문화마을",
+2
+ "ADDR1": "부산광역시 영도구 흰여울길",
+3
+"ITEMCNTNTS": "절영해안산책로 가파른 담벼락 위로 독특한 마을 풍경이 보인다. 해안가 절벽 끝에 바다를 따라 난 좁은 골목길 안쪽으로 작은 집들이 다닥다닥 붙어 있다. 피난민들의 애잔한 삶이 시작된 곳이자 현재는 마을주민과 함께하는 문화마을공동체 흰여울문화마을이 자리한 곳이다.\n부산의 대표적인 원도심 흰여울길은 봉래산 기슭에서 굽이쳐 내리는 물줄기가 마치 흰 눈이 내리는 모습과 비슷하다 하여 이름 지어졌다. 2011년 12월, 낡은 가옥을 리모델링하면서 현재는 영도의 생활을 느낄 수 있는 독창적인 문화예술마을로 거듭났다. \n\n영화 ＜변호인＞을 보지 못한 사람도 그 영화의 명대사는 외울 것이다. 진우네 집 담벼락에 크게 쓰여 있기 때문이다. 많은 여행자의 영도 여행 인증샷 1호는 언제나 진우네 담벼락이었다. 흰여울길은 모두 14개의 골목길로 이어져 있고 골목골목 아기자기한 카페와 공방, 독립서점 등이 자리하고 있다. 느릿느릿 걷는 골목마다 바다 풍경이 들어오고 돌 틈 사이 피어있는 이름 모를 초록들이 일상에 여유를 더한다. 흰여울길에서 빼놓을 수 없는 코스 중 하나는 단연 흰여울점빵. 눈앞에 망망대해를 마주하고 후후 불며 먹는 라면이 세상 맛있는 곳. 발품 팔아 고단한 마음에 한줄기 평화가 스민다. 길의 끝은 또다시 절영해안산책로와 이어지고 절벽과 땅 아래를 힘차게 오르내리는 여행자들과 만난다.\n\n마을 담장을 따라 걷는 흰여울길은 현재의 절영로가 생기기 전까지 태종대로 가는 유일한 길이었다. 파도 소리 벗 삼아 오며 가는 길에 시선은 항상 바다에 머문다. 크고 작은 배들이 점점이 떠 있는 모습이 이국적이다. 부산항에 들어오는 선박들이 닻을 내리고 잠시 머무는 곳, 묘박지의 풍경이다. 영도에서만 볼 수 있는 색다른 풍경이기도 하다.\n바다를 접한 가파른 절벽이라 사람이 살수 없던 곳에 마을공동체의 노력으로 예술이 스며들었다, 흰여울 전망대에서 바라보는 영도 앞바다가 경이롭다.\n지금, 여기, 우리\n흰여울\n\n\n"
+4
+"MAIN_IMG_THUMB": "https://www.visitbusan.net/uploadImgs/files/cntnts/20191222164810529_thumbL",
+5
+"HOMEPAGE_URL": "http://www.ydculture.com/huinnyeoulculturetown/",
+
+강의장의 같은 공인 아이피로 동시에 접근시, 공격으로 판정할수도 있어서, 접근 제한이 걸림.
+그래서, 크롬에서, 무료 vpn 확장팩 설치해서, 다시 ,크롬으로 접속 하면 잘됩니다.
+예시)VeePN
+
+
+
+
+
+
+

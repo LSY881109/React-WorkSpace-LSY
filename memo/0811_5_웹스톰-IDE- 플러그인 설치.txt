@@ -1,9 +1,10 @@
+설정 -> 플러그인 -> 설치 목록
 1. 리액트 버디
 2. 리액트
 3. 리액트 코드 스니펫
 4. 머터리얼 UI 디자인
 5. Prettier 설정.
-yarn 사용 중.
+yarn 사용 중. (터미널에서 설치)
 1)
 yarn add --dev --exact prettier
 2)
