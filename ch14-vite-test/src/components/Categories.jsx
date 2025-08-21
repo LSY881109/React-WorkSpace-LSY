@@ -35,14 +35,24 @@ const categories = [
     name: 'general',
     text: '일반',
   },
-  // 공공데이터  추가작업1
+  // 공공데이터 추가작업
   {
     name: 'busanAtt',
     text: '부산명소',
   },
+  {
+    name: 'busanFood',
+    text: '부산맛집',
+  },
+  {
+    name: 'busanWeather',
+    text: '부산날씨',
+  },
+  {
+    name: 'busanFestival',
+    text: '부산축제',
+  },
 ];
-
-// css 작업,
 
 const CategoriesBlock = styled.div`
   display: flex;
@@ -56,9 +66,6 @@ const CategoriesBlock = styled.div`
   }
 `;
 
-// css 작업 2
-// NavLink 변경 전
-// const Category = styled.div`
 const Category = styled(NavLink)`
   font-size: 1.125rem;
   cursor: pointer;
@@ -70,8 +77,6 @@ const Category = styled(NavLink)`
   &:hover {
     color: #495057;
   }
-
-  // 부모로부터 전달 받은 props 객체 안에서, 조건부 렌더링 가능.
 
   &.active {
     font-weight: 600;
@@ -86,18 +91,13 @@ const Category = styled(NavLink)`
     margin-left: 1rem;
   }
 `;
-//부모로부터 전달 받은 props 를 사용하기.
-// const Categories = ({ onSelect, category }) => {
+
 const Categories = () => {
   return (
     <CategoriesBlock>
       {categories.map((c) => (
         <Category
           key={c.name}
-          // NavLink 사용 전
-          // active={category === c.name}
-          // onClick={() => onSelect(c.name)}
-
           className={({ isActive }) => (isActive ? 'active' : undefined)}
           to={c.name === 'all' ? '/' : `/${c.name}`}
         >

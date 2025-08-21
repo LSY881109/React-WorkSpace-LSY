@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// styled-components 이용해서,
-// 컴포넌트 안에 , css 스타일 작업 같이 진행하기.
-
 const NewsItemBlock = styled.div`
   display: flex;
 
@@ -34,18 +31,12 @@ const NewsItemBlock = styled.div`
     }
   }
 
-  // 뉴스 아이템 서로 간의 간격 조절,
   & + & {
     margin-top: 3rem;
   }
 `;
 
 const NewsItem = ({ article }) => {
-  // 사용할 데이터 목록
-  // title, 제목
-  // description, 내용
-  // url, 기사 원본 링크
-  // urlToImage, 뉴스 이미지
   const { title, description, url, urlToImage } = article;
   return (
     <NewsItemBlock>
